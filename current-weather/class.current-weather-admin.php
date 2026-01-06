@@ -13,29 +13,14 @@ class Markweather_Admin {
         );
 
         register_setting('currentweather', 'currentweather-apikey');
-        register_setting('currentweather', 'currentweather-lat');
-        register_setting('currentweather', 'currentweather-lon');
         
         add_settings_field('currentweather-apikey', 'API key', array('Markweather_Admin','apikey_cb'), 'currentweather', 'currentweather_section_id');
-        add_settings_field('currentweather-lat', 'Latitude', array('Markweather_Admin', 'lat_cb'), 'currentweather', 'currentweather_section_id');
-        add_settings_field('currentweather-lon', 'Longitude', array('Markweather_Admin','lon_cb'), 'currentweather', 'currentweather_section_id');
     }
 
     function apikey_cb($args){
         $value = get_option('currentweather-apikey');
         printf('<input type="text" name="currentweather-apikey" value="'.$value.'"/>');
     }
-
-    function lat_cb($args){
-        $value = get_option('currentweather-lat');
-        printf('<input type="text" name="currentweather-lat" value="'.$value.'"/>');
-    }
-    
-    function lon_cb($args){
-        $value = get_option('currentweather-lon');
-        printf('<input type="text" name="currentweather-lon" value="'.$value.'"/>');
-    }
-
 
     function currentweather_options_page() {
         add_submenu_page(

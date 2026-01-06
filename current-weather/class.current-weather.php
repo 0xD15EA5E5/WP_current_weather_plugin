@@ -11,9 +11,9 @@ class Markweather {
 
     }
 
-    public static function displayweather(){
+    public static function displayweather($atts){
         $api = new Markweather_api();
-        $response = $api->get_current_weather();
+        $response = $api->get_current_weather($atts['city']);
         $data = json_decode($response);
         return '<p>'.$data->main->temp.'&#176;C, '.ucfirst($data->weather[0]->description).'<p>';
     }
