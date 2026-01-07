@@ -17,12 +17,12 @@ class Markweather_Admin {
         add_settings_field('currentweather-apikey', 'API key', array('Markweather_Admin','apikey_cb'), 'currentweather', 'currentweather_section_id');
     }
 
-    function apikey_cb($args){
+    public static function apikey_cb($args){
         $value = get_option('currentweather-apikey');
         printf('<input type="text" name="currentweather-apikey" value="'.$value.'"/>');
     }
 
-    function currentweather_options_page() {
+    public static function currentweather_options_page() {
         add_submenu_page(
             'options-general.php',
             'Current Weather Options',
@@ -33,7 +33,7 @@ class Markweather_Admin {
         );
     }
 
-    function currentweather_options_page_html() {
+    public static function currentweather_options_page_html() {
         if ( ! current_user_can('manage_options')) {
             return;
         }
